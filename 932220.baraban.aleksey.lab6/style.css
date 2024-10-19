@@ -1,0 +1,53 @@
+.container {
+    width: 700px;
+    margin: auto;
+}
+
+.buttons {
+    display: flex;
+}
+
+button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    background-color: red;
+    border: 2px solid black;
+    color: white;
+}
+
+.content {
+    display: flex;
+    overflow: hidden;
+}
+
+.column {
+    height: 400px;
+}
+
+.cat-column {
+    width: var(--left-width);
+    background-color: blue;
+}
+
+.dog-column {
+    width: var(--right-width);
+    background-color: green;
+}
+
+figure {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.hidden {
+    display: none;
+}
