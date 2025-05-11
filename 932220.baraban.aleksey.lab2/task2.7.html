@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2.7</title>
+    <style>
+        div {
+            color: white;
+            height: 100px;
+            width: 150px;
+        }
+        .static {
+            background-color: blueviolet;
+            position: static;
+        }
+        .relative {
+            background-color: darkred;
+            position: relative;
+        }
+        .relative-orange {
+            background-color: peru;
+            position: relative;
+            bottom: 20px;
+            left: 30px;
+        }
+        .relative-pink {
+            background-color: indianred;
+            position: relative;
+            width: 600px;
+            height: 350px;
+        }
+        .abs-rel {
+            background-color: indigo;
+            position: absolute;
+            right: 0;
+            top: 100px;
+            width: 300px;
+            height: 200px;
+        }
+        .fixed {
+            background-color: forestgreen;
+            right: 0;
+            bottom: 0;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="static">It's a static div!</div>
+    <div class="relative">It's a relative div!</div>
+    <div class="relative-orange">It's a relative div!</div>
+    <div class="relative-pink">It's a relative div!
+        <div class="abs-rel">It's an absolute div with relative parent!</div>
+    </div>
+    <div class="fixed">It's a fixed div!</div>
+</body>
+</html>
