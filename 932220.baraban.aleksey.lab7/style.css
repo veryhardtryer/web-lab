@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+input {
+    margin: 5px;
+}
+.buttons {
+    display: flex;
+}
+.buttons button {
+    cursor: pointer;
+    margin: 5px;
+}
+
+/*фигуры*/
+.shape {
+    cursor: pointer;
+    position: absolute;
+}
+.circle {
+    border: 1px solid black;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 50%;
+}
+.triangle {
+   border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 90px solid rgba(0, 0, 255, 0.7);
+}
+.square {
+    background-color: rgba(0, 128, 0, 0.7);
+    border: 1px solid black;
+}
+.selected {
+    background-color: rgba(255, 255, 0, 0.7);
+}
+
+.selected-triangle {
+    border-bottom-color:  rgba(255, 255, 0, 0.7);
+}
