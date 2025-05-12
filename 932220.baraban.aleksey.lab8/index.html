@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9</title>
+</head>
+<body>
+    <div id="container">
+        <div class="element">
+            <input type="text" id="name">
+            <input type="text" id="value">
+            <button class="up_btn">&uarr;</button>
+            <button class="down_btn">&darr;</button>
+            <button class="remove_btn">&#9747;</button>
+        </div>
+    </div>
+    <button id="add_btn">Добавить элемент</button>
+    <button id="save_btn">Сохранить</button>
+    <p id="output" style="font-family: 'Courier New', Courier, monospace;"></p>
+</body>
+</html>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('container');
+        const addBtn = document.getElementById('add_btn');
+        const saveBtn = document.getElementById('save_btn');
+        const output = document.getElementById('output');
+
+        // Добавление элементов
+        function createElement() {
+                const element = document.createElement('div');
+                element.className = 'element';
+                element.innerHTML = `
+                    <input type="text" id="name">
+                    <input type="text" id="value">
+                    <button class="up_btn">&uarr;</button>
+                    <button class="down_btn">&darr;</button>
+                    <button class="remove_btn">&#9747;</button>
+                `;
+                return element;
+            }
+        
+            addBtn.addEventListener('click', () => {
+                const newElement = createElement();
+                container.appendChild(newElement);
+            });
+
+        // Обработка кнопок внутри элементов
+        container.addEventListener('click', (event) => {
+            const target = event.target;
+            const element = target.closest('.element');
+            const elements = Array.from(container.children);
+            const index = elements.indexOf(element);
+
+            if (target.classList.contains('up_btn')) {
+                if (index > 0) {
+                    container.insertBefore(element, elements[index - 1]);
+                }
+            } else if (target.classList.contains('down_btn')) {
+                if (index < elements.length - 1) {
+                    container.insertBefore(element, elements[index + 2]);
+                }
+            } else if (target.classList.contains('remove_btn')) {
+                element.remove();
+            }
+        });
+
+        // Сохранение данных
+        saveBtn.addEventListener('click', () => {
+           const elements = Array.from(container.children);
+           let outputtext = "";
+           const data = elements.forEach((element, index) => {
+                let input1 = element.querySelector('#name');
+                let input2 = element.querySelector('#value');
+                outputtext += `"${input1.value}": "${input2.value}"`;
+                // если это не последний элемент, добавляем запятую
+                if (index < elements.length - 1) {
+                    outputtext += ', ';
+                }
+            });
+            output.textContent = "{" +  outputtext + "}";
+        });
+    })
+
+    
+
+</script>
