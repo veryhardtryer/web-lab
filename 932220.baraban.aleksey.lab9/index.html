@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            display: flex;
+        }
+        .calculator {
+            border: 3px solid lightskyblue;
+            margin: 10px;
+            padding: 10px;
+        }
+        .calculator input {
+            height: 40px;
+            width: 98%;
+            margin-bottom: 10px;
+            font-size: 20px;
+            text-align: right;
+        }
+        .calculator_buttons {
+            display: grid;
+            column-gap: 10px;
+            row-gap: 10px;
+            grid-template-columns: repeat(5, 1fr);
+        }
+        .calculator_buttons button {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result">
+        <div class="calculator_buttons">
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="deleteLast()">&lsaquo;-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button style="grid-row: span 2; height: 100%;"
+                    onclick="calculate()">=</button>
+            <button style="width: 100%; grid-column: span 2;"
+                    onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="appendToDisplay('+')">+</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const result = document.getElementById('result');
+
+    const operations = new Set(['-', '+', '*', '/', '=']);
+    function appendToDisplay(value) {
+
+        if (result.value === '') {
+            if (operations.has(value)) {
+                alert('Операция не может быть первой');
+                return;
+            }
+            if (value === '.') {
+                alert('Нельзя вводить точку первой');
+                return;
+            }
+        }
+
+        result.value += value;
+    }
+
+    function clearDisplay() {
+        result.value = '';
+    }
+
+    function deleteLast() {
+        result.value = result.value.slice(0, -1);
+    }
+
+    function calculate() {
+        try {
+            result.value = eval(result.value);
+        } catch (e) {
+            result.value = 'Error';
+            alert('Неправильное выражение');
+            return;
+        }
+    }
+</script>
